@@ -14,5 +14,8 @@
     "supply-chain-security"
   ],
   "author": "Ayush Kumar Singh",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "vercel": "^65.2.0"
+  }
 }

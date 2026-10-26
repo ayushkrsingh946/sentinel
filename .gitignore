@@ -42,8 +42,10 @@ htmlcov/
 
 # Node
 node_modules/
+package-lock.json
 npm-debug.log*
 
 # OS specific
 .DS_Store
 Thumbs.db
+.vercel
