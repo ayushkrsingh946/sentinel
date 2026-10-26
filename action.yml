@@ -1,0 +1,55 @@
+name: "Sentinel Code & Supply-Chain Security Jury"
+description: "Audit source code and dependency diffs using an open-weight multi-model jury"
+author: "Ayush Kumar Singh"
+
+inputs:
+  path:
+    description: "Directory or file to audit"
+    required: false
+    default: "."
+  max-risk-score:
+    description: "Maximum acceptable risk score before failing the workflow (0-100)"
+    required: false
+    default: "60"
+  model-base-url:
+    description: "OpenAI-compatible inference base URL"
+    required: false
+    default: "http://localhost:11434/v1"
+  model-access-key:
+    description: "Optional API access key"
+    required: false
+    default: "ollama"
+
+outputs:
+  risk-score:
+    description: "Computed composite risk score (0-100)"
+    value: ${{ steps.audit.outputs.risk_score }}
+  findings-count:
+    description: "Number of verified findings"
+    value: ${{ steps.audit.outputs.findings_count }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: Install Sentinel
+      shell: bash
+      run: |
+        python -m pip install --upgrade pip
+        pip install pydantic matplotlib pytest
+        pip install -e .
+
+    - name: Run Sentinel Audit
+      id: audit
+      shell: bash
+      env:
+        SENTINEL_BASE_URL: ${{ inputs.model-base-url }}
+        MODEL_ACCESS_KEY: ${{ inputs.model-access-key }}
+        SENTINEL_RISK_THRESHOLD: ${{ inputs.max-risk-score }}
+      run: |
+        echo "Running Sentinel Audit against ${{ inputs.path }}..."
+        sentinel scan "${{ inputs.path }}" --threshold "${{ inputs.max-risk-score }}"

@@ -1,0 +1,7 @@
+--- a/tests/test_date.py
++++ b/tests/test_date.py
+@@ -10,3 +10,6 @@ def test_format_iso():
+     assert format_date("2026-10-26") == "26 Oct 2026"
++
++def test_format_empty():
++    assert format_date("") == ""

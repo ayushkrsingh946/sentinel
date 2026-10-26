@@ -1,0 +1,181 @@
+{
+  "code_samples": [
+    {
+      "file": "benchmark/datasets/code/sqli_raw_query.py",
+      "is_vulnerable": true,
+      "category": "INJECTION"
+    },
+    {
+      "file": "benchmark/datasets/code/cmd_os_system.py",
+      "is_vulnerable": true,
+      "category": "INJECTION"
+    },
+    {
+      "file": "benchmark/datasets/code/cmd_subprocess_shell.py",
+      "is_vulnerable": true,
+      "category": "INJECTION"
+    },
+    {
+      "file": "benchmark/datasets/code/path_traversal_open.py",
+      "is_vulnerable": true,
+      "category": "INJECTION"
+    },
+    {
+      "file": "benchmark/datasets/code/ssrf_fetch_url.py",
+      "is_vulnerable": true,
+      "category": "SSRF"
+    },
+    {
+      "file": "benchmark/datasets/code/deserialization_pickle.py",
+      "is_vulnerable": true,
+      "category": "DESERIALIZATION"
+    },
+    {
+      "file": "benchmark/datasets/code/deserialization_yaml.py",
+      "is_vulnerable": true,
+      "category": "DESERIALIZATION"
+    },
+    {
+      "file": "benchmark/datasets/code/hardcoded_aws_key.py",
+      "is_vulnerable": true,
+      "category": "AUTH_SECRETS"
+    },
+    {
+      "file": "benchmark/datasets/code/hardcoded_secret_token.py",
+      "is_vulnerable": true,
+      "category": "AUTH_SECRETS"
+    },
+    {
+      "file": "benchmark/datasets/code/weak_crypto_md5.py",
+      "is_vulnerable": true,
+      "category": "WEAK_CRYPTO"
+    },
+    {
+      "file": "benchmark/datasets/code/jwt_none_alg.py",
+      "is_vulnerable": true,
+      "category": "AUTH_BYPASS"
+    },
+    {
+      "file": "benchmark/datasets/code/eval_dynamic_calc.py",
+      "is_vulnerable": true,
+      "category": "INJECTION"
+    },
+    {
+      "file": "benchmark/datasets/code/ssrf_cloud_meta.py",
+      "is_vulnerable": true,
+      "category": "SSRF"
+    },
+    {
+      "file": "benchmark/datasets/code/broken_auth_bypass.py",
+      "is_vulnerable": true,
+      "category": "AUTH_BYPASS"
+    },
+    {
+      "file": "benchmark/datasets/code/weak_crypto_des.py",
+      "is_vulnerable": true,
+      "category": "WEAK_CRYPTO"
+    },
+    {
+      "file": "benchmark/datasets/code/benign_parameterized_sql.py",
+      "is_vulnerable": false,
+      "category": "BENIGN"
+    },
+    {
+      "file": "benchmark/datasets/code/benign_subprocess_safe.py",
+      "is_vulnerable": false,
+      "category": "BENIGN"
+    },
+    {
+      "file": "benchmark/datasets/code/benign_secure_hash.py",
+      "is_vulnerable": false,
+      "category": "BENIGN"
+    },
+    {
+      "file": "benchmark/datasets/code/benign_env_secret.py",
+      "is_vulnerable": false,
+      "category": "BENIGN"
+    },
+    {
+      "file": "benchmark/datasets/code/benign_json_parse.py",
+      "is_vulnerable": false,
+      "category": "BENIGN"
+    }
+  ],
+  "diff_samples": [
+    {
+      "file": "benchmark/datasets/diffs/malicious_postinstall_curl.diff",
+      "is_vulnerable": true,
+      "category": "SUPPLY_CHAIN"
+    },
+    {
+      "file": "benchmark/datasets/diffs/malicious_env_exfil.diff",
+      "is_vulnerable": true,
+      "category": "SUPPLY_CHAIN"
+    },
+    {
+      "file": "benchmark/datasets/diffs/malicious_obfuscated_eval.diff",
+      "is_vulnerable": true,
+      "category": "OBFUSCATION"
+    },
+    {
+      "file": "benchmark/datasets/diffs/malicious_setup_py_hook.diff",
+      "is_vulnerable": true,
+      "category": "SUPPLY_CHAIN"
+    },
+    {
+      "file": "benchmark/datasets/diffs/malicious_ssh_stealer.diff",
+      "is_vulnerable": true,
+      "category": "SUPPLY_CHAIN"
+    },
+    {
+      "file": "benchmark/datasets/diffs/malicious_cred_harvester.diff",
+      "is_vulnerable": true,
+      "category": "SUPPLY_CHAIN"
+    },
+    {
+      "file": "benchmark/datasets/diffs/malicious_reverse_shell.diff",
+      "is_vulnerable": true,
+      "category": "SUPPLY_CHAIN"
+    },
+    {
+      "file": "benchmark/datasets/diffs/benign_patch_version.diff",
+      "is_vulnerable": false,
+      "category": "BENIGN"
+    },
+    {
+      "file": "benchmark/datasets/diffs/benign_docs_typo.diff",
+      "is_vulnerable": false,
+      "category": "BENIGN"
+    },
+    {
+      "file": "benchmark/datasets/diffs/benign_refactor_pure.diff",
+      "is_vulnerable": false,
+      "category": "BENIGN"
+    },
+    {
+      "file": "benchmark/datasets/diffs/benign_added_unit_test.diff",
+      "is_vulnerable": false,
+      "category": "BENIGN"
+    },
+    {
+      "file": "benchmark/datasets/diffs/benign_add_dev_dependency.diff",
+      "is_vulnerable": false,
+      "category": "BENIGN"
+    },
+    {
+      "file": "benchmark/datasets/diffs/benign_css_update.diff",
+      "is_vulnerable": false,
+      "category": "BENIGN"
+    },
+    {
+      "file": "benchmark/datasets/diffs/benign_python_type_hint.diff",
+      "is_vulnerable": false,
+      "category": "BENIGN"
+    },
+    {
+      "file": "benchmark/datasets/diffs/benign_ci_matrix_bump.diff",
+      "is_vulnerable": false,
+      "category": "BENIGN"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+--- a/math.js
++++ b/math.js
+@@ -3,5 +3,3 @@ function clamp(val, min, max) {
+-  if (val < min) return min;
+-  if (val > max) return max;
+-  return val;
++  return Math.min(Math.max(val, min), max);
+ }

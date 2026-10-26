@@ -1,0 +1,28 @@
+# Sentinel Review-and-Fix Policy Specification
+# Controls how automated patches and security fixes are vetted and applied.
+
+version: 1.0
+
+# Approval modes:
+# - manual: Default. Every patch requires explicit developer review/approval before applying.
+# - auto-low-risk: Automatically applies LOW and INFO severity patches if test suite passes.
+# - auto-all: Automatically applies fixes across all severities (requires explicit opt-in).
+approval_mode: "manual"
+
+patching:
+  backup_directory: ".sentinel_patches"
+  require_clean_git_working_tree: true
+  run_test_command: ".venv/bin/pytest tests/"
+  auto_rollback_on_test_failure: true
+  create_backup_before_apply: true
+
+ci_enforcement:
+  max_tolerable_risk_score: 60
+  block_on_critical: true
+  block_on_high: true
+  block_on_supply_chain_tamper: true
+
+protected_branches:
+  - "main"
+  - "master"
+  - "production"

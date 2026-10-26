@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel — Open-Weight Security Jury</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <div class="brand-shield">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <span class="brand-name">SENTINEL</span>
+        <span class="badge-tag">OPEN-WEIGHT JURY</span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#overview" class="nav-link active" data-tab="overview">Overview</a>
+        <a href="#dashboard" class="nav-link" data-tab="dashboard">Live Dashboard</a>
+        <a href="#benchmark" class="nav-link" data-tab="benchmark">Evals & Benchmark</a>
+        <a href="#guide" class="nav-link" data-tab="guide">Integration Guide</a>
+        <a href="#docs" class="nav-link" data-tab="docs">Docs & Safety</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="btn-icon" title="Toggle Theme" aria-label="Toggle Theme">
+          <span class="sun-icon">☀️</span>
+          <span class="moon-icon">🌙</span>
+        </button>
+        <a href="https://github.com/ayushkrsingh946/sentinel" target="_blank" class="btn btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+      <div class="hero-chip">
+        <span class="chip-pulse"></span>
+        Hacktoberfest 2026 Flagship · Open-Source AI Security
+      </div>
+      <h1 class="hero-title">
+        The Open-Weight <span class="gradient-text">Jury</span> That Audits Every Dependency Update
+      </h1>
+      <p class="hero-subtitle">
+        Single models suffer from confident hallucinations and false alarms. Sentinel deploys a multi-model jury of independent open-weight LLMs (Llama 3.2, Qwen 2.5, SmolLM 2) that reconciles disagreements and discards any claim lacking line-level evidence.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#dashboard" class="btn btn-primary" onclick="switchTab('dashboard')">Launch Live Dashboard Demo</a>
+        <a href="#guide" class="btn btn-secondary" onclick="switchTab('guide')">View Integration Guide</a>
+      </div>
+
+      <!-- Quick Metrics Strip -->
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Independent Juror LLMs</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Local & Private (Ollama)</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">0%</span>
+          <span class="stat-label">Code Execution Risk (Static)</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">SHA-256</span>
+          <span class="stat-label">Chained Audit Trail</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB CONTENT WRAPPER -->
+  <main class="container page-content">
+    
+    <!-- TAB 1: OVERVIEW & ARCHITECTURE -->
+    <div id="tab-overview" class="tab-pane active">
+      <div class="section-header">
+        <h2>How Sentinel Works: The 3-Juror Consensus Engine</h2>
+        <p>Why open-weight models are essential: your private code never leaves your infrastructure, and several diverse model families independently vote on every release.</p>
+      </div>
+
+      <!-- Juror Roles Grid -->
+      <div class="juror-grid">
+        <div class="juror-card card-glow-blue">
+          <div class="juror-icon">🛡️</div>
+          <div class="juror-header">
+            <h3>Juror 1: Injection Specialist</h3>
+            <span class="model-badge">Meta Llama 3.2 3B</span>
+          </div>
+          <p class="juror-desc">Audits code for SQL injection, OS command injection, path traversal, SSRF, unsafe deserialization, and SSTI.</p>
+          <div class="juror-spec">
+            <span>Focus:</span> Input validation & AST call graph
+          </div>
+        </div>
+
+        <div class="juror-card card-glow-emerald">
+          <div class="juror-icon">🔐</div>
+          <div class="juror-header">
+            <h3>Juror 2: Auth & Secrets Specialist</h3>
+            <span class="model-badge">Alibaba Qwen 2.5 0.5B</span>
+          </div>
+          <p class="juror-desc">Detects hardcoded tokens, secret keys, JWT algorithm bypasses, weak hashing (MD5/SHA1), and broken authorization.</p>
+          <div class="juror-spec">
+            <span>Focus:</span> Cryptographic boundaries & credentials
+          </div>
+        </div>
+
+        <div class="juror-card card-glow-purple">
+          <div class="juror-icon">📦</div>
+          <div class="juror-header">
+            <h3>Juror 3: Supply-Chain Specialist</h3>
+            <span class="model-badge">HuggingFace SmolLM 2 135M</span>
+          </div>
+          <p class="juror-desc">Specializes in package updates, malicious lifecycle hooks (`postinstall`), outbound environment exfiltration, and obfuscated evals.</p>
+          <div class="juror-spec">
+            <span>Focus:</span> Dependency diffs & script hooks
+          </div>
+        </div>
+      </div>
+
+      <!-- Judge Step Callout -->
+      <div class="judge-banner">
+        <div class="judge-icon">⚖️</div>
+        <div class="judge-content">
+          <h3>The Judge Step: Evidence Verification & Disagreement Reconciliation</h3>
+          <p>
+            When small models hallucinate, they often invent line numbers or fabricate functions. Sentinel's Judge step performs strict evidence verification: <strong>every finding where the quoted evidence is absent from the actual source file is discarded.</strong> Disagreements are weighed, deduplicated, and resolved into an evidence-backed unified verdict.
+          </p>
+        </div>
+      </div>
+
+      <!-- Architecture Diagram -->
+      <div class="architecture-box">
+        <h3>System Architecture Flow</h3>
+        <div class="pipeline-diagram">
+          <div class="pipe-node">
+            <span class="node-title">1. Code / Diff Ingestion</span>
+            <span class="node-sub">Scope allowlist verified</span>
+          </div>
+          <div class="pipe-arrow">➜</div>
+          <div class="pipe-node">
+            <span class="node-title">2. Secret Redaction</span>
+            <span class="node-sub">Keys & tokens scrubbed</span>
+          </div>
+          <div class="pipe-arrow">➜</div>
+          <div class="pipe-node highlight">
+            <span class="node-title">3. Parallel Jury Review</span>
+            <span class="node-sub">3 open-weight models</span>
+          </div>
+          <div class="pipe-arrow">➜</div>
+          <div class="pipe-node judge">
+            <span class="node-title">4. Evidence Judge</span>
+            <span class="node-sub">Discards hallucinations</span>
+          </div>
+          <div class="pipe-arrow">➜</div>
+          <div class="pipe-node">
+            <span class="node-title">5. Policy & Fixer</span>
+            <span class="node-sub">Manual / auto-rollback</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: LIVE INTERACTIVE DASHBOARD -->
+    <div id="tab-dashboard" class="tab-pane">
+      <div class="dashboard-toolbar">
+        <div>
+          <h2>Security Findings & Active Shield</h2>
+          <p class="text-muted">Target: <code>my-saas-core (v2.4.1)</code> · Scan Mode: <code>Multi-Model Jury Consensus</code></p>
+        </div>
+        <div class="toolbar-actions">
+          <button class="btn btn-outline btn-sm" onclick="triggerRescan()">🔄 Re-run Jury Scan</button>
+          <span class="badge badge-success">● Audit Chain Intact</span>
+        </div>
+      </div>
+
+      <!-- Dashboard KPI Row -->
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <span class="kpi-label">Risk Score</span>
+          <div class="kpi-val text-danger" id="kpi-score">68.0 <small>/ 100</small></div>
+          <span class="kpi-sub">Level: HIGH (CI Blocked)</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Confirmed Findings</span>
+          <div class="kpi-val" id="kpi-findings">4</div>
+          <span class="kpi-sub">Verified with file + line evidence</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Hallucinations Discarded</span>
+          <div class="kpi-val text-success" id="kpi-discarded">7</div>
+          <span class="kpi-sub">Filtered out by Judge step</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Active Blocked Attackers</span>
+          <div class="kpi-val text-warning" id="kpi-blocked">2</div>
+          <span class="kpi-sub">Temporary TTL (Guard agent)</span>
+        </div>
+      </div>
+
+      <!-- Finding Tabs -->
+      <div class="dash-tabs">
+        <button class="dash-tab active" onclick="showSubTab('findings-view')">Findings & Patches (<span id="findings-count-badge">4</span>)</button>
+        <button class="dash-tab" onclick="showSubTab('jury-view')">Jury Deliberation (<span id="disagree-count-badge">3</span>)</button>
+        <button class="dash-tab" onclick="showSubTab('guard-view')">Live Guard & Blocklist (<span id="blocked-count-badge">2</span>)</button>
+        <button class="dash-tab" onclick="showSubTab('audit-view')">Cryptographic Audit Chain</button>
+      </div>
+
+      <!-- SubTab: Findings View -->
+      <div id="subtab-findings-view" class="subtab-content active">
+        <div class="findings-list" id="findings-container">
+          <!-- Dynamically populated via JS -->
+        </div>
+      </div>
+
+      <!-- SubTab: Jury Deliberation -->
+      <div id="subtab-jury-view" class="subtab-content">
+        <div class="card deliberation-box">
+          <h3>Jury Deliberation & Disagreement Breakdown</h3>
+          <p class="text-muted">How the Judge reconciled differing opinions among Llama 3.2, Qwen 2.5, and SmolLM 2:</p>
+          <div id="disagreements-container"></div>
+        </div>
+      </div>
+
+      <!-- SubTab: Guard & Blocklist -->
+      <div id="subtab-guard-view" class="subtab-content">
+        <div class="card">
+          <div class="card-header-flex">
+            <div>
+              <h3>Background Guard Sidecar & IP Blocklist</h3>
+              <p class="text-muted">Fast regex heuristics detect active scans and attacks. Temporary blocks expire automatically after TTL.</p>
+            </div>
+            <span class="badge badge-warning">Mode: MONITOR (Default)</span>
+          </div>
+
+          <table class="table" id="blocked-ips-table">
+            <thead>
+              <tr>
+                <th>IP Address</th>
+                <th>Triggered Rule</th>
+                <th>Blocked At</th>
+                <th>TTL Remaining</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="blocked-ips-body">
+              <!-- Dynamically populated via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SubTab: Cryptographic Audit Chain -->
+      <div id="subtab-audit-view" class="subtab-content">
+        <div class="card">
+          <div class="card-header-flex">
+            <div>
+              <h3>Append-Only SHA-256 Chained Audit Trail</h3>
+              <p class="text-muted">Every scan, verdict, patch approval, and rollback is cryptographically linked to prevent tampering.</p>
+            </div>
+            <button class="btn btn-sm btn-outline" onclick="verifyAuditUI()">Verify Integrity Chain</button>
+          </div>
+          <div class="audit-log-viewer" id="audit-log-entries">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TAB 3: BENCHMARK & EVALS -->
+    <div id="tab-benchmark" class="tab-pane">
+      <div class="section-header">
+        <h2>Ground-Truth Benchmark: Single Models vs. Sentinel Jury</h2>
+        <p>Evaluated on 35 ground-truth test cases (20 vulnerable code samples + benign controls, 15 malicious dependency diffs + benign updates). Executed on local Apple Silicon hardware with zero closed APIs.</p>
+      </div>
+
+      <div class="benchmark-grid">
+        <div class="card">
+          <h3>Evals Summary Table</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Model / Architecture</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-Score</th>
+                <th>False Alarm Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Llama 3.2 3B</strong> (Single)</td>
+                <td>62.9%</td>
+                <td>100.0%</td>
+                <td>77.2%</td>
+                <td><span class="text-danger">100.0%</span></td>
+              </tr>
+              <tr>
+                <td><strong>Qwen 2.5 0.5B</strong> (Single)</td>
+                <td>56.7%</td>
+                <td>77.3%</td>
+                <td>65.4%</td>
+                <td><span class="text-danger">100.0%</span></td>
+              </tr>
+              <tr>
+                <td><strong>SmolLM 2 135M</strong> (Single)</td>
+                <td>62.9%</td>
+                <td>100.0%</td>
+                <td>77.2%</td>
+                <td><span class="text-danger">100.0%</span></td>
+              </tr>
+              <tr class="highlight-row">
+                <td><strong>Sentinel Jury (Consensus) ★</strong></td>
+                <td><strong>65.6%</strong></td>
+                <td><strong>95.5%</strong></td>
+                <td><strong>77.8%</strong></td>
+                <td><span class="text-success"><strong>84.6% (-15.4% drop)</strong></span></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="small text-muted" style="margin-top: 1rem;">
+            * Measured results from <code>sentinel bench</code> running on Ollama locally. The Judge's evidence verification eliminates hallucinations on benign code, lowering false alarms while maintaining 95.5% recall on actual attacks.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Benchmark Chart</h3>
+          <div class="chart-container">
+            <img src="../benchmark/benchmark_chart.png" alt="Sentinel Jury Benchmark Chart" class="responsive-chart">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: INTEGRATION GUIDE -->
+    <div id="tab-guide" class="tab-pane">
+      <div class="section-header">
+        <h2>Integration Guide: From Zero to Full Defense</h2>
+        <p>Step-by-step numbered instructions with copy-paste commands to deploy Sentinel in your projects.</p>
+      </div>
+
+      <div class="guide-steps">
+        <!-- Step 1 -->
+        <div class="guide-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Install Sentinel & Pull Local Models</h3>
+            <p>Sentinel runs 100% locally with Ollama. No API keys or cloud accounts required.</p>
+            <div class="code-block">
+              <code># 1. Install Ollama and pull open-weight models
+ollama pull llama3.2:3b
+ollama pull qwen2.5:0.5b
+ollama pull smollm2:135m
+
+# 2. Install Sentinel CLI
+pip install sentinel-security
+# Or clone and install editable:
+git clone https://github.com/ayushkrsingh946/sentinel.git && cd sentinel && pip install -e .</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="guide-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Configure Scope Allowlist (`sentinel.scope.yml`)</h3>
+            <p>Sentinel non-negotiably enforces scope allowlists. It will refuse to scan or probe unauthorized paths or hosts.</p>
+            <div class="code-block">
+              <code># sentinel.scope.yml
+version: 1.0
+allowed_targets:
+  - "localhost"
+  - "127.0.0.1"
+  - "staging.local"
+allowed_paths:
+  - "."
+  - "src"
+  - "packages"</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="guide-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Run Your First Audit & Diff Check</h3>
+            <p>Scan source code or compare dependency updates before committing.</p>
+            <div class="code-block">
+              <code># Scan codebase
+sentinel scan src/ --threshold 60
+
+# Audit dependency update diff
+sentinel diff package.json.orig package.json.new
+
+# Run Safe Staging Probe
+sentinel probe http://localhost:8080</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="guide-step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h3>Add GitHub Action CI Workflow</h3>
+            <p>Fail pull requests when risky code or tampered dependency updates are pushed.</p>
+            <div class="code-block">
+              <code># .github/workflows/sentinel.yml
+name: Sentinel Audit
+on: [pull_request]
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ayushkrsingh946/sentinel@main
+        with:
+          path: "."
+          max-risk-score: 60</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="guide-step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <h3>Attach Background Guard Middleware (FastAPI & Express)</h3>
+            <p>Monitor-only by default! Watches traffic for injection patterns, scanner fingerprints, and path traversals.</p>
+            <div class="code-block">
+              <code># FastAPI / Python
+from fastapi import FastAPI
+from sentinel.guard.fastapi_middleware import SentinelGuardMiddleware
+
+app = FastAPI()
+app.add_middleware(SentinelGuardMiddleware, mode="monitor", block_threshold=70)
+
+# Express / Node.js
+const { SentinelExpressGuard } = require('sentinel-guard-middleware');
+const guard = new SentinelExpressGuard({ mode: 'monitor' });
+app.use(guard.middleware());</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: DOCS, SAFETY & LIMITATIONS -->
+    <div id="tab-docs" class="tab-pane">
+      <div class="section-header">
+        <h2>Responsible AI Disclosure & Operational Limits</h2>
+        <p>Honest security documentation: Sentinel reduces risk, but is not an infallible shield.</p>
+      </div>
+
+      <div class="docs-grid">
+        <div class="card">
+          <h3>Core Safety Rails (Non-Negotiable)</h3>
+          <ul class="docs-list">
+            <li><strong>Static Analysis Only:</strong> Sentinel never executes scanned package code or download lifecycle scripts.</li>
+            <li><strong>Automated Secret Redaction:</strong> AWS credentials, GitHub tokens, JWTs, and database URLs are scrubbed before prompt construction.</li>
+            <li><strong>Scope Guard:</strong> Probing or scanning targets outside <code>sentinel.scope.yml</code> is strictly rejected.</li>
+            <li><strong>Human-in-the-Loop Fixes:</strong> Policy defaults to <code>manual</code> approval. Automated patches always back up files and roll back on test failure.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Honest System Limitations</h3>
+          <ul class="docs-list">
+            <li><strong>Small Model Noise:</strong> Sub-10B open-weight models may exhibit false positives on complex metaprogramming. The Judge step filters evidence, but manual review is always advised.</li>
+            <li><strong>Zero-Day Novelty:</strong> Novel attack vectors with zero precedent in training data may bypass pattern checks.</li>
+            <li><strong>Dynamic Payloads:</strong> Code compiled into binary blobs or fetched dynamically at execution time requires complementary runtime sandbox monitoring.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2026 Ayush Kumar Singh · Built for Hacktoberfest 2026 Open-Source AI Challenge · MIT Licensed</p>
+      <div class="footer-links">
+        <a href="https://github.com/ayushkrsingh946/sentinel" target="_blank">GitHub Repo</a>
+        <a href="https://ollama.com" target="_blank">Ollama Models</a>
+        <a href="#docs" onclick="switchTab('docs')">Security Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

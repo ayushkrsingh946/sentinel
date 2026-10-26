@@ -1,0 +1,7 @@
+--- a/package.json
++++ b/package.json
+@@ -8,3 +8,3 @@
+   "dependencies": {
+-    "lodash": "^4.17.20"
++    "lodash": "^4.17.21"
+   }

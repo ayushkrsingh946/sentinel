@@ -1,0 +1,35 @@
+{
+  "api_base_url": "http://localhost:11434/v1",
+  "api_key": "ollama",
+  "timeout_seconds": 45,
+  "max_retries": 2,
+  "cache_enabled": true,
+  "cache_dir": ".sentinel_cache",
+  "audit_log_path": ".sentinel_audit.log",
+  "jurors": [
+    {
+      "id": "juror-1",
+      "name": "Injection Specialist",
+      "model": "llama3.2:3b",
+      "role": "injection_specialist",
+      "focus": "SQL injection, command injection, path traversal, SSRF, insecure deserialization, template injection, XSS."
+    },
+    {
+      "id": "juror-2",
+      "name": "Auth & Secrets Specialist",
+      "model": "qwen2.5:0.5b",
+      "role": "auth_secrets_specialist",
+      "focus": "Hardcoded keys/secrets, authentication bypass, broken access control, weak cryptography, insecure session/token handling."
+    },
+    {
+      "id": "juror-3",
+      "name": "Supply-Chain Specialist",
+      "model": "smollm2:135m",
+      "role": "supply_chain_specialist",
+      "focus": "Malicious install/preinstall scripts, unexpected outbound network/socket connections, hidden subprocess calls, obfuscated payload strings, typosquatting."
+    }
+  ],
+  "judge_model": "llama3.2:3b",
+  "risk_threshold_ci": 60,
+  "offline_fallback_enabled": true
+}

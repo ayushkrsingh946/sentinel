@@ -1,0 +1,6 @@
+--- a/styles.css
++++ b/styles.css
+@@ -14,3 +14,3 @@ .btn-primary {
+-  background-color: #0070f3;
++  background-color: #0060df;
+   border-radius: 6px;

