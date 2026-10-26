@@ -25,6 +25,9 @@ IGNORE_DIRS = {
 }
 
 
+IGNORE_FILENAMES = {"mock_engine.py", "fast_rules.py"}
+
+
 class CodeScanner:
     """Recursively scans source files, scrubs secrets, runs jury evaluation, and generates consensus."""
 
@@ -53,6 +56,8 @@ class CodeScanner:
         for p in target_path.rglob("*"):
             if p.is_file():
                 if any(ignored in p.parts for ignored in IGNORE_DIRS):
+                    continue
+                if p.name in IGNORE_FILENAMES:
                     continue
                 if p.suffix.lower() in IGNORE_EXTENSIONS:
                     continue

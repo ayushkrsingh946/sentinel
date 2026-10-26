@@ -31,6 +31,9 @@ class MockJurorEngine:
     def _detect_injection(cls, filename: str, lines: List[str]) -> List[Finding]:
         findings = []
         for idx, line in enumerate(lines, 1):
+            stripped = line.strip()
+            if stripped.startswith("#") or stripped.startswith("//") or stripped.startswith("*"):
+                continue
             # SQL Injection
             if re.search(r"""(?i)(select\s+.*from|update\s+.*set|delete\s+.*from).*(?:%|\+|\.format|f['"])""", line) or \
                re.search(r"""execute\(\s*f["'].*SELECT""", line, re.IGNORECASE):
@@ -125,6 +128,9 @@ class MockJurorEngine:
     def _detect_auth_secrets(cls, filename: str, lines: List[str]) -> List[Finding]:
         findings = []
         for idx, line in enumerate(lines, 1):
+            stripped = line.strip()
+            if stripped.startswith("#") or stripped.startswith("//") or stripped.startswith("*"):
+                continue
             # Hardcoded API key or token
             if re.search(r"""(?i)(api_key|secret_key|jwt_secret|private_key|token)\s*=\s*["'][A-Za-z0-9_\-\.]{12,}["']""", line):
                 findings.append(
@@ -182,6 +188,9 @@ class MockJurorEngine:
     def _detect_supply_chain(cls, filename: str, lines: List[str]) -> List[Finding]:
         findings = []
         for idx, line in enumerate(lines, 1):
+            stripped = line.strip()
+            if stripped.startswith("#") or stripped.startswith("//") or stripped.startswith("*"):
+                continue
             # Malicious preinstall/postinstall curl/wget/bash
             if re.search(r"""(?i)["'](postinstall|preinstall)["']\s*:\s*["'].*(curl|wget|bash|sh|powershell).*["']""", line) or \
                re.search(r"""(?i)(curl|wget)\s+.*(?:\.sh|\.exe|\.bin)\s*\|\s*(?:bash|sh)""", line):
