@@ -1,0 +1,18 @@
+{
+  "name": "sentinel",
+  "version": "1.0.0",
+  "description": "Sentinel — Open-Weight Security Jury Platform",
+  "scripts": {
+    "build": "mkdir -p dashboard && if [ -f benchmark/benchmark_chart.png ]; then cp benchmark/benchmark_chart.png dashboard/benchmark_chart.png; fi",
+    "start": "python3 -m http.server 8080"
+  },
+  "keywords": [
+    "security",
+    "open-weight",
+    "llm",
+    "ai-jury",
+    "supply-chain-security"
+  ],
+  "author": "Ayush Kumar Singh",
+  "license": "MIT"
+}

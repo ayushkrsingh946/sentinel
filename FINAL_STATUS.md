@@ -51,7 +51,7 @@
 - [x] **GitHub Action (`action.yml` + `.github/workflows/sentinel-ci.yml`):** Enforces CI thresholds on PRs.
 - [x] **Background Guard Middleware:** FastAPI ASGI middleware and Node.js Express middleware with monitor-only defaults, fast regex scoring, and auto-expiring IP blocklists.
 - [x] **Agent Skill (`skills/sentinel-audit/SKILL.md`):** Adheres to the Agent Skills open standard (agentskills.io).
-- [x] **Interactive Dashboard (`dashboard/`):** Globally hosted live on GitHub Pages at [https://ayushkrsingh946.github.io/sentinel/](https://ayushkrsingh946.github.io/sentinel/). Features charming jewel-toned themes for light/dark mode, a comprehensive "What Sentinel Does" capability overview, interactive patch approval simulation, and IP unblocker.
+- [x] **Interactive Dashboard (`dashboard/`):** Globally hosted live on GitHub Pages at [https://ayushkrsingh946.github.io/sentinel/](https://ayushkrsingh946.github.io/sentinel/) and zero-config Vercel hosting via `vercel.json` and 1-click deploy [https://vercel.com/new/clone?repository-url=https://github.com/ayushkrsingh946/sentinel](https://vercel.com/new/clone?repository-url=https://github.com/ayushkrsingh946/sentinel). Features charming jewel-toned themes for light/dark mode, a comprehensive "What Sentinel Does" capability overview, interactive patch approval simulation, and IP unblocker.
 - [x] **Docker Compose (`docker-compose.yml`):** One-command containerized local launch.
 - [x] **Unit Test Suite:** 22 passing tests in `tests/` covering scope, redaction, repair, evidence filtering, audit chaining, and guard rules.
 
