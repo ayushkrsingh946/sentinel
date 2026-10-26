@@ -94,6 +94,87 @@
     
     <!-- TAB 1: OVERVIEW & ARCHITECTURE -->
     <div id="tab-overview" class="tab-pane active">
+      
+      <!-- What Sentinel Does Section -->
+      <section class="what-it-does-section">
+        <div class="what-it-does-header">
+          <span class="section-tag">Core Mission & Capabilities</span>
+          <h2>What <span class="hero-brand">Sentinel</span> Does</h2>
+          <p class="section-lead">
+            Sentinel is an autonomous, open-weight AI security platform that protects software repositories from supply-chain attacks, malicious dependency updates, and critical vulnerabilities. It replaces fragile single-model scanners with a 3-model jury that cross-examines evidence, rejects hallucinated line citations, and drafts validated patches with automated rollback.
+          </p>
+        </div>
+
+        <div class="capabilities-grid">
+          <div class="cap-card">
+            <div class="cap-icon">📦</div>
+            <h3>1. Supply-Chain & PR Auditing</h3>
+            <p>Every pull request, lockfile bump, and package manifest is inspected for hidden backdoors, malicious lifecycle hooks (<code>postinstall</code>, <code>prepack</code>), telemetry exfiltration, and socket callbacks.</p>
+            <div class="cap-highlight">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              Stops npm & PyPI supply-chain poisoning
+            </div>
+          </div>
+
+          <div class="cap-card">
+            <div class="cap-icon">⚖️</div>
+            <h3>2. Tri-Juror Open-Weight Consensus</h3>
+            <p>Rather than trusting a single fallible LLM, Sentinel convenes three distinct local open-weight models (Llama 3.2, Qwen 2.5, SmolLM 2). Each juror audits code through a specialized security lens (Injections, Auth/Secrets, Supply-Chain).</p>
+            <div class="cap-highlight">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              Zero single-model bias or failure point
+            </div>
+          </div>
+
+          <div class="cap-card">
+            <div class="cap-icon">🔍</div>
+            <h3>3. Strict Evidence Verification</h3>
+            <p>Sub-10B models frequently hallucinate line numbers. Sentinel’s Judge step mechanically verifies every claim against source code: if the quoted line is missing from the file, the finding is discarded.</p>
+            <div class="cap-highlight">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              -15.4% false alarms vs single models
+            </div>
+          </div>
+
+          <div class="cap-card">
+            <div class="cap-icon">🛠️</div>
+            <h3>4. Verified Fixes & Rollback Protection</h3>
+            <p>Generates surgical code patches with human-in-the-loop review. Patches are automatically verified in an isolated test run; if any test fails, Sentinel executes an instantaneous rollback from snapshot backups.</p>
+            <div class="cap-highlight">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              Safe remediation without breaking CI
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-Step Process Flow -->
+        <div class="process-flow">
+          <div class="process-flow-title">The End-to-End Audit Journey (Under 5 Seconds)</div>
+          <div class="steps-ribbon">
+            <div class="flow-step">
+              <div class="step-num">1</div>
+              <div class="step-title">Scrub & Ingest</div>
+              <div class="step-desc">Code diffs & manifests are scrubbed of secrets (AWS keys, tokens) before prompting.</div>
+            </div>
+            <div class="flow-step">
+              <div class="step-num">2</div>
+              <div class="step-title">Parallel Jury Vote</div>
+              <div class="step-desc">Three open-weight models deliberate in parallel over the sanitized diff.</div>
+            </div>
+            <div class="flow-step">
+              <div class="step-num">3</div>
+              <div class="step-title">Judicial Evidence Filter</div>
+              <div class="step-desc">Judge cross-examines claims and purges any hallucinated lines.</div>
+            </div>
+            <div class="flow-step">
+              <div class="step-num">4</div>
+              <div class="step-title">Actionable Verdict</div>
+              <div class="step-desc">Outputs SARIF report, CI exit codes, and validated patch proposals.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <div class="section-header">
         <h2>How Sentinel Works: The 3-Juror Consensus Engine</h2>
         <p>Why open-weight models are essential: your private code never leaves your infrastructure, and several diverse model families independently vote on every release.</p>
@@ -347,7 +428,7 @@
         <div class="card">
           <h3>Benchmark Chart</h3>
           <div class="chart-container">
-            <img src="../benchmark/benchmark_chart.png" alt="Sentinel Jury Benchmark Chart" class="responsive-chart">
+            <img src="benchmark_chart.png" onerror="this.onerror=null; this.src='../benchmark/benchmark_chart.png';" alt="Sentinel Jury Benchmark Chart" class="responsive-chart">
           </div>
         </div>
       </div>
