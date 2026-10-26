@@ -32,6 +32,16 @@
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+
+  /* Charming Brand Palette - Dark Mode */
+  --brand-gradient: linear-gradient(135deg, #c084fc 0%, #f472b6 35%, #38bdf8 70%, #34d399 100%);
+  --brand-glow: drop-shadow(0 2px 14px rgba(192, 132, 252, 0.45)) drop-shadow(0 0 22px rgba(56, 189, 248, 0.3));
+  --brand-shield-bg: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #06b6d4 100%);
+  --brand-shield-glow: 0 0 18px rgba(168, 85, 247, 0.5), 0 0 8px rgba(6, 182, 212, 0.35);
+  --brand-badge-bg: linear-gradient(135deg, rgba(192, 132, 252, 0.15), rgba(56, 189, 248, 0.12));
+  --brand-badge-text: #e0e7ff;
+  --brand-badge-border: rgba(192, 132, 252, 0.38);
+  --brand-badge-shadow: 0 0 12px rgba(192, 132, 252, 0.22);
 }
 
 [data-theme="light"] {
@@ -48,6 +58,16 @@
 
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
+
+  /* Charming Brand Palette - Light Mode */
+  --brand-gradient: linear-gradient(135deg, #6d28d9 0%, #db2777 36%, #2563eb 72%, #0d9488 100%);
+  --brand-glow: drop-shadow(0 2px 8px rgba(109, 40, 217, 0.28)) drop-shadow(0 1px 3px rgba(219, 39, 119, 0.2));
+  --brand-shield-bg: linear-gradient(135deg, #7c3aed 0%, #db2777 50%, #2563eb 100%);
+  --brand-shield-glow: 0 4px 14px rgba(124, 58, 237, 0.35), 0 2px 6px rgba(37, 99, 235, 0.25);
+  --brand-badge-bg: linear-gradient(135deg, rgba(109, 40, 217, 0.08), rgba(219, 39, 119, 0.08));
+  --brand-badge-text: #6d28d9;
+  --brand-badge-border: rgba(109, 40, 217, 0.28);
+  --brand-badge-shadow: 0 2px 8px rgba(109, 40, 217, 0.12);
 }
 
 * {
@@ -100,35 +120,75 @@ body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .brand-shield {
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, var(--accent-blue), var(--accent-indigo));
-  border-radius: 8px;
+  width: 38px;
+  height: 38px;
+  background: var(--brand-shield-bg);
+  border-radius: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+  box-shadow: var(--brand-shield-glow);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.brand:hover .brand-shield {
+  transform: rotate(-6deg) scale(1.08);
 }
 
 .brand-name {
-  font-weight: 800;
-  font-size: 1.25rem;
-  letter-spacing: -0.02em;
+  font-weight: 900;
+  font-size: 1.35rem;
+  letter-spacing: 0.05em;
+  background: var(--brand-gradient);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: var(--brand-glow);
+  animation: charmingShimmer 6s ease-in-out infinite alternate;
+  display: inline-block;
+  user-select: none;
+  transition: filter 0.25s ease, transform 0.2s ease;
+}
+
+.brand:hover .brand-name {
+  transform: translateY(-1px);
 }
 
 .badge-tag {
   font-size: 0.65rem;
   font-weight: 700;
-  padding: 0.2rem 0.5rem;
-  background: rgba(59, 130, 246, 0.15);
-  color: var(--accent-blue);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  padding: 0.25rem 0.6rem;
+  background: var(--brand-badge-bg);
+  color: var(--brand-badge-text);
+  border: 1px solid var(--brand-badge-border);
+  box-shadow: var(--brand-badge-shadow);
   border-radius: 999px;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+.brand:hover .badge-tag {
+  border-color: rgba(192, 132, 252, 0.6);
+  box-shadow: 0 0 14px rgba(192, 132, 252, 0.3);
+}
+
+@keyframes charmingShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 .nav-links {
@@ -234,6 +294,27 @@ body {
   background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.hero-chip-name {
+  font-weight: 800;
+  background: var(--brand-gradient);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.05em;
+}
+
+.hero-brand {
+  background: var(--brand-gradient);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: var(--brand-glow);
+  animation: charmingShimmer 6s ease-in-out infinite alternate;
+  display: inline-block;
 }
 
 .hero-subtitle {
@@ -876,6 +957,24 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.footer-shield {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 7px !important;
+}
+
+.footer-brand-name {
+  font-size: 1.1rem !important;
 }
 
 .footer-links {
