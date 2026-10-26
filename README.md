@@ -4,9 +4,11 @@
 [![Open-Weight LLMs](https://img.shields.io/badge/AI-Open--Weight%20Only-emerald.svg)](https://ollama.com)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
 [![Local & Offline Ready](https://img.shields.io/badge/Privacy-100%25%20Local-purple.svg)](https://github.com/ayushkrsingh946/sentinel)
+[![Live Dashboard](https://img.shields.io/badge/Live%20Dashboard-GitHub%20Pages-blue?style=flat&logo=github)](https://ayushkrsingh946.github.io/sentinel/)
 
 > Built for the **MLH Hacktoberfest 2026: Open-Source AI Challenge** (Track: Best Open-Source AI Project).  
-> **100% Free & Open-Source (MIT)** · Powered by local open-weight models via Ollama · Zero closed/paid APIs.
+> **100% Free & Open-Source (MIT)** · Powered by local open-weight models via Ollama · Zero closed/paid APIs.  
+> 🌐 **Live Web Dashboard:** [https://ayushkrsingh946.github.io/sentinel/](https://ayushkrsingh946.github.io/sentinel/)
 
 ---
 
